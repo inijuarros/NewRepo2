@@ -177,10 +177,13 @@ Module Program
         Dim sueltotal As Double = 0
         For i As Integer = 0 To listaEmpleados.Count - 1 Step 1
             vactotal += calcVacaciones(listaEmpleados.ElementAt(i))
-            sueltotal += Double.Parse(calcSueldo(listaEmpleados.ElementAt(i)))
+            If calcSueldo(listaEmpleados.ElementAt(i)) <> "Edad insuficente para trabajar" Then
+                sueltotal += Double.Parse(calcSueldo(listaEmpleados.ElementAt(i)))
+            End If
             contador = i
         Next
 
+        Console.WriteLine($"{media(vactotal, sueltotal, contador)}")
 
 
 
